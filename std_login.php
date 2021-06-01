@@ -34,9 +34,9 @@
         padding-left: 5mm;
     }
     p.foot{
-
     height:50px;
-    font-size:30px;
+    font-size:20px;
+    font-weight:bold;
     color:#444444;
     display:flex;
     justify-content: center;
@@ -46,9 +46,10 @@
     }
     p.footnam{
     
-    font-size:40px;
+    font-size:30px;
     color:#ffffff;
     display:flex;
+    font-weight:bold;
     justify-content: center;
     align-items: center;
     width:100vw;

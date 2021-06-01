@@ -74,7 +74,7 @@
 	  			<th scope="col"> Roll Number </th>
 	  			<th scope="col"> Student Name</th>
 	  			<th scope="col"> Program Name</th>
-	  			<th scope="col"> email</th>
+	  			<th scope="col"> Email</th>
 	  			<th scope="col"> UG CPI</th>
 	  			<th scope="col"> PG CPI</th>
 	  			<th scope="col"> PhD CPI</th>

@@ -157,7 +157,8 @@
 					':statas'=>"Applied"
 				)
 			);
-			header('Location:std_db_jobs.php');
+			// header('Location:std_db_jobs.php');
+			echo "<meta http-equiv='refresh' content='0'>";
 		}
 	}
 
@@ -165,7 +166,8 @@
 	{	
 		session_unset();
 		session_destroy();
-		header("Location:std_login.php");
+		// header("Location:std_login.php");
+		echo "<meta http-equiv='refresh' content='0'>";
 	}
 
 ?>
