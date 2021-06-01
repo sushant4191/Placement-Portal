@@ -4,6 +4,18 @@
 	<meta charset="utf-8"/>
 	<title>Student Signup</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<style type="text/css">
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+    *{
+        font-family: "Open Sans", sans-serif;
+    }
+    body{
+		background-image: url('https://mdbcdn.b-cdn.net/img/Photos/Others/images/76.jpg');
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+    }
+	</style>
 </head>
 <body>
 	<form class="form" action="" method="post">
@@ -64,7 +76,7 @@
 			$phdcpi = -1;
 		$passwd = $_POST['passwd'];
 		
-		$sql = "INSERT INTO plcmtportal.student(rollno, fname, mname, lname, email, ug_college, pg_college, prog_name, tenth_per, twelveth_per, ug_cpi, pg_cpi, phd_cpi, passwd) VALUES(:rollno, :fname, :mname, :lname, :email, :ug_college, :pg_college, :prog_name, :tenth_per, :twelveth_per, :ugcpi, :pgcpi, :phdcpi, :passwd)";
+		$sql = "INSERT INTO placement_portal.student(rollno, fname, mname, lname, email, ug_college, pg_college, prog_name, tenth_per, twelveth_per, ug_cpi, pg_cpi, phd_cpi, passwd) VALUES(:rollno, :fname, :mname, :lname, :email, :ug_college, :pg_college, :prog_name, :tenth_per, :twelveth_per, :ugcpi, :pgcpi, :phdcpi, :passwd)";
 		$stmt = $conn->prepare($sql);
 		$res = $stmt->execute(
 			array(

@@ -3,8 +3,28 @@
 <head>
 	<title>Job Registration</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<style type="text/css">
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+    *{
+        font-family: "Open Sans", sans-serif;
+    }
+    body{
+        background-image: url('https://mdbcdn.b-cdn.net/img/Photos/Others/images/76.jpg');
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+    }
+	.d1{
+        margin:0;
+        background: white;
+        width: 100vw;
+        padding: 3mm;
+        padding-left: 5mm;
+    }
+	</style>
 </head>
 <body>
+	<h1 class="d1">Placement Portal</h1>
 	<form class="form" action="" method="post">
         <h1 class="login-title">Job registration</h1>
         <input type="text" class="login-input" name="company_name" placeholder="Company Name" required />
@@ -31,7 +51,7 @@
 		$ctc = $_POST['ctc'];
 		$passwd = $_POST['passwd'];
 
-		$sql = "INSERT INTO plcmtportal.jobs(company_name, profile_name, job_details, application_deadline, ctc, password) VALUES (:company_name, :profile_name, :job_details, :application_deadline, :ctc, :passwd)";
+		$sql = "INSERT INTO placement_portal.jobs(company_name, profile_name, job_details, application_deadline, ctc, password) VALUES (:company_name, :profile_name, :job_details, :application_deadline, :ctc, :passwd)";
 		$stmt = $conn->prepare($sql);
 		$res = $stmt->execute(
 			array(

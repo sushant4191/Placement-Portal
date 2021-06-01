@@ -12,10 +12,18 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>Company Dashboard</title>
 
-	<link rel="stylesheet" type="text/css" href="bootstrap-4.5.3-dist/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="bootstrap-4.5.3-dist/css/customstyle.css">
+	<!-- <link rel="stylesheet" type="text/css" href="bootstrap-4.5.3-dist/css/bootstrap.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="bootstrap-4.5.3-dist/css/customstyle.css"> -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+	<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+  rel="stylesheet">
 
 <style type="text/css">
+	@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+    *{
+        font-family: "Open Sans", sans-serif;
+    }
 	.dtable{
 		margin: 10mm;
 		border-style: solid;
@@ -75,8 +83,8 @@
 	  		
 	  		<?php
 	  			require('db.php');
-	  			//$sql = "SELECT * FROM plcmtportal.eligible WHERE eligible.profile_name='".$_SESSION['profile_name']."' AND eligible.company_name='".$_SESSION['company_name']."'";
-	  			$sql = "SELECT * FROM plcmtportal.application A, plcmtportal.student S WHERE A.rollno=S.rollno AND A.profile_name='".$_SESSION['profile_name']."' AND A.company_name='".$_SESSION['company_name']."'";
+	  			//$sql = "SELECT * FROM placement_portal.eligible WHERE eligible.profile_name='".$_SESSION['profile_name']."' AND eligible.company_name='".$_SESSION['company_name']."'";
+	  			$sql = "SELECT * FROM placement_portal.application A, placement_portal.student S WHERE A.rollno=S.rollno AND A.profile_name='".$_SESSION['profile_name']."' AND A.company_name='".$_SESSION['company_name']."'";
 	  			
 	  			$stmt = $conn->query($sql);
 
@@ -112,9 +120,11 @@
 
 
 	<!-- jQuery (Bootstrap JS plugins depend on it) -->
-	<script type="bootstrap-4.5.3-dist/js/jquery-3.5.1.min.js"></script>
-	<script type="bootstrap-4.5.3-dist/js/bootstrp.min.js"></script>
-	<script type="bootstrap-4.5.3-dist/js/script.js"></script>
+	<!-- <script type="bootstrap-4.5.3-dist/js/jquery-3.5.1.min.js"></script> -->
+	<!-- <script type="bootstrap-4.5.3-dist/js/bootstrp.min.js"></script> -->
+	<!-- <script type="bootstrap-4.5.3-dist/js/script.js"></script> -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 </body>
 </html>
 

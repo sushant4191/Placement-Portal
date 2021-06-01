@@ -9,14 +9,24 @@
     <title>Student Login</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 <style type="text/css">
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+    *{
+        font-family: "Open Sans", sans-serif;
+    }
     .space{
         margin-left: 10mm 
     }
+    html{
+    max-width: 100vw;
+    }
     body{
+        background-image: url('https://mdbcdn.b-cdn.net/img/Photos/Others/images/76.jpg');
+        height: 100vh;
         margin: 0;
         padding: 0;
     }
     .d1{
+        margin:0;
         background: white;
         width: 100%;
         padding: 3mm;
@@ -35,7 +45,7 @@
         $profile_name = $_POST['profile_name'];
         $passwd = $_POST['passwd'];
 
-        $str = "SELECT * FROM plcmtportal.jobs WHERE jobs.company_name='$company_name' AND jobs.profile_name='$profile_name' AND jobs.password='$passwd'";
+        $str = "SELECT * FROM placement_portal.jobs WHERE jobs.company_name='$company_name' AND jobs.profile_name='$profile_name' AND jobs.password='$passwd'";
 
         $stmt = $conn->query($str);
 

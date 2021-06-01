@@ -8,8 +8,17 @@
 <head>
     <title>Student Login</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+    
 <style type="text/css">
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+    *{
+        font-family: "Open Sans", sans-serif;
+    }
     body{
+        background-image: url('https://mdbcdn.b-cdn.net/img/Photos/Others/images/76.jpg');
+        height: 100vh;
         margin: 0;
         padding: 0;
 
@@ -18,11 +27,34 @@
         margin-left: 10mm 
     }
     .d1{
+        margin:0;
         background: white;
         width: 100%;
         padding: 3mm;
         padding-left: 5mm;
     }
+    p.foot{
+
+    height:50px;
+    font-size:30px;
+    color:#444444;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width:100vw;
+    margin:0;
+    }
+    p.footnam{
+    
+    font-size:40px;
+    color:#ffffff;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width:100vw;
+    margin:0;
+    }
+}
 </style>
 </head>
 <body>
@@ -33,7 +65,7 @@
         require('db.php');
         $rollno = $_POST['rollno'];
         $passwd = $_POST['passwd'];
-        $stmt = $conn->query("SELECT * FROM plcmtportal.student WHERE student.rollno=$rollno AND student.passwd=$passwd");
+        $stmt = $conn->query("SELECT * FROM placement_portal.student WHERE student.rollno=$rollno AND student.passwd=$passwd");
 
         $row=$stmt->fetch(PDO::FETCH_ASSOC);
         if($row)
@@ -63,8 +95,13 @@
                 echo "Invalid credentials!";
             ?>
         </p>
-        <p class="link"><a href="std_signup.php">New Registration</a><span class="space"></span><a href="job_login.php">For companies</a></p>
+        <p id="login1" class="link"><a href="std_signup.php">New Registration</a><span class="space"></span><a href="job_login.php">For companies</a></p>
         
     </form>
+
+    <footer>
+  <p class="foot">Front End by:</p>
+  <p class="footnam">Sushant Srivastav</p>
+</footer>
 </body>
 </html>

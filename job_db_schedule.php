@@ -12,10 +12,19 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>Company Dashboard</title>
 
-	<link rel="stylesheet" type="text/css" href="bootstrap-4.5.3-dist/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="bootstrap-4.5.3-dist/css/customstyle.css">
+	<!-- <link rel="stylesheet" type="text/css" href="bootstrap-4.5.3-dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="bootstrap-4.5.3-dist/css/customstyle.css"> -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+  rel="stylesheet">
+
 
 <style type="text/css">
+	@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+    *{
+        font-family: "Open Sans", sans-serif;
+    }
 	.dtable{
 		margin: 10mm;
 		border-style: solid;
@@ -83,7 +92,6 @@
 </div>
 
 	<br>
-
 	<div class="dtable">
 		<h1> Events Scheduled</h1>
 		<br>
@@ -95,10 +103,9 @@
 	  			<th scope="col"> Links</th>
 	  		</thead>
 	  		<tbody>
-	  		
 	  		<?php
 	  			require('db.php');
-	  			$sql = "SELECT * FROM plcmtportal.time_slots T WHERE T.company_name='".$_SESSION['company_name']."' AND T.profile_name='".$_SESSION['profile_name']."' ORDER BY T.start_time";
+	  			$sql = "SELECT * FROM placement_portal.time_slots T WHERE T.company_name='".$_SESSION['company_name']."' AND T.profile_name='".$_SESSION['profile_name']."' ORDER BY T.start_time";
 	  			
 	  			$stmt = $conn->query($sql);
 
@@ -114,26 +121,26 @@
 					echo "</td></tr>";
 				}
 	  		?>
-
-
 	  		</tbody>
 	  	</table>
   	</div><br>
-
+	
 	<!-- jQuery (Bootstrap JS plugins depend on it) -->
-	<script type="bootstrap-4.5.3-dist/js/jquery-3.5.1.min.js"></script>
+	<!-- <script type="bootstrap-4.5.3-dist/js/jquery-3.5.1.min.js"></script>
 	<script type="bootstrap-4.5.3-dist/js/bootstrp.min.js"></script>
-	<script type="bootstrap-4.5.3-dist/js/script.js"></script>
+	<script type="bootstrap-4.5.3-dist/js/script.js"></script> -->
+	
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 </body>
 </html>
-
 <?php
-
 	if(isset($_POST['sub']))
 	{
 		require('db.php');
 
-		$sql = "INSERT INTO plcmtportal.time_slots(company_name, profile_name, start_time, end_time, links, purpose) VALUES (:company_name, :profile_name, :start_time, :end_time, :links, :purpose)";
+		$sql = "INSERT INTO placement_portal.time_slots(company_name, profile_name, start_time, end_time, links, purpose) VALUES (:company_name, :profile_name, :start_time, :end_time, :links, :purpose)";
 		$stmt = $conn->prepare($sql);
 		$res = $stmt->execute(
 			array(
@@ -145,15 +152,13 @@
 				':purpose'=>$_POST['purpose']
 			)
 		);
-		header("Location:job_db_schedule.php");
-
+		// header("Location:job_db_schedule.php");
+		echo "<meta http-equiv='refresh' content='0'>";
 	}
-
 	if(isset($_POST['logout']))
 	{	
 		session_unset();
 		session_destroy();
 		header("Location:job_login.php");
 	}
-
 ?>

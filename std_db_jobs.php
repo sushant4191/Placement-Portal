@@ -13,10 +13,18 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>Student Dashboard</title>
 
-	<link rel="stylesheet" type="text/css" href="bootstrap-4.5.3-dist/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="bootstrap-4.5.3-dist/css/customstyle.css">
+	<!-- <link rel="stylesheet" type="text/css" href="bootstrap-4.5.3-dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="bootstrap-4.5.3-dist/css/customstyle.css"> -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+	<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+  rel="stylesheet">
 
 <style type="text/css">
+	@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+    *{
+        font-family: "Open Sans", sans-serif;
+    }
 	.dtable{
 		margin: 10mm;
 		border-style: solid;
@@ -60,7 +68,7 @@
 	<br>
 
 	<div class="dtable">
-		<h1>Eligibile jobs</h1>
+		<h1>Eligible jobs</h1>
 		<br>
 		<table class="table">
 	  		<thead>
@@ -75,7 +83,7 @@
 	  		<?php
 	  			require('db.php');
 
-	  			$sql = "SELECT J.profile_name, J.company_name, J.application_deadline, J.ctc FROM plcmtportal.Jobs J, plcmtportal.Eligible E, plcmtportal.Program P, plcmtportal.Student S WHERE J.profile_name=E.profile_name AND J.company_name=E.company_name AND E.prog_name=P.prog_name AND S.prog_name=P.prog_name AND S.rollno=".$_SESSION['rollno']." AND S.tenth_per>=E.tenth_per_crt AND S.twelveth_per>=E.twelveth_per_crt AND S.ug_cpi>=E.ug_cpi_crt AND (S.pg_cpi=-1 OR S.pg_cpi>=E.pg_cpi_crt) AND (S.phd_cpi=-1 OR S.phd_cpi>=E.phd_cpi_crt) AND J.application_deadline>=now()";
+	  			$sql = "SELECT J.profile_name, J.company_name, J.application_deadline, J.ctc FROM placement_portal.Jobs J, placement_portal.Eligible E, placement_portal.Program P, placement_portal.Student S WHERE J.profile_name=E.profile_name AND J.company_name=E.company_name AND E.prog_name=P.prog_name AND S.prog_name=P.prog_name AND S.rollno=".$_SESSION['rollno']." AND S.tenth_per>=E.tenth_per_crt AND S.twelveth_per>=E.twelveth_per_crt AND S.ug_cpi>=E.ug_cpi_crt AND (S.pg_cpi=-1 OR S.pg_cpi>=E.pg_cpi_crt) AND (S.phd_cpi=-1 OR S.phd_cpi>=E.phd_cpi_crt) AND J.application_deadline>=now()";
 	  			
 	  			$stmt = $conn->query($sql);
 
@@ -93,7 +101,7 @@
 					echo $row['ctc'];
 					echo "</td><td>";
 
-					$sql2 = "SELECT * FROM plcmtportal.application A, plcmtportal.student S WHERE A.rollno=S.rollno AND A.company_name='".$row['company_name']."' AND A.profile_name='".$row['profile_name']."' AND A.rollno=".$_SESSION['rollno'];
+					$sql2 = "SELECT * FROM placement_portal.application A, placement_portal.student S WHERE A.rollno=S.rollno AND A.company_name='".$row['company_name']."' AND A.profile_name='".$row['profile_name']."' AND A.rollno=".$_SESSION['rollno'];
 					
 					$stmt2 = $conn->query($sql2);
 					$row2=$stmt2->fetch(PDO::FETCH_ASSOC);
@@ -118,9 +126,11 @@
 
 
 	<!-- jQuery (Bootstrap JS plugins depend on it) -->
-	<script type="bootstrap-4.5.3-dist/js/jquery-3.5.1.min.js"></script>
+	<!-- <script type="bootstrap-4.5.3-dist/js/jquery-3.5.1.min.js"></script>
 	<script type="bootstrap-4.5.3-dist/js/bootstrp.min.js"></script>
-	<script type="bootstrap-4.5.3-dist/js/script.js"></script>
+	<script type="bootstrap-4.5.3-dist/js/script.js"></script> -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 </body>
 </html>
 
@@ -136,7 +146,7 @@
 			$company_name = $memo[$i][1];
 			$profile_name = $memo[$i][2];
 
-			$sql = "INSERT INTO plcmtportal.application(rollno,prog_name,company_name,profile_name,statas) VALUES (:rollno, :prog_name, :company_name, :profile_name, :statas)";
+			$sql = "INSERT INTO placement_portal.application(rollno,prog_name,company_name,profile_name,statas) VALUES (:rollno, :prog_name, :company_name, :profile_name, :statas)";
 			$stmt = $conn->prepare($sql);
 			$stmt->execute(
 				array(
